@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
-const pilotStatus = document.getElementById('pilotStatus');
-const copilotStatus = document.getElementById('copilotStatus');
+// const pilotStatus = document.getElementById('pilotStatus');
+// const copilotStatus = document.getElementById('copilotStatus');
   
 
 window.addEventListener("load", function() {
@@ -58,8 +58,13 @@ window.addEventListener("load", function() {
       if (cargoMassInput <= 10000 && fuelLevelInput >= 10000) {
          document.getElementById("launchStatus").innerHTML = `Shuttle is ready for launch`;
          document.getElementById("launchStatus").style="color: green;"
-
-      }   
+         document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+         document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
+      } else if (cargoMassInput <= 10000) {
+         document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+      } else if (fuelLevelInput >= 10000) {
+         document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
+      }
    });
  });
 
