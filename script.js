@@ -4,8 +4,31 @@ const copilotStatus = document.getElementById('copilotStatus');
   
 
 window.addEventListener("load", function() {
+   // alert("page load?");
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+      // alert("Time to see your Mission Destination!")
+         response.json().then( function(json) {
+            // alert("ready to utilize info");
+            // console.log(response);
+            const div = document.getElementById("missionTarget");
+            let index = 0;
+               div.innerHTML = `
+                  <h2>Mission Destination</h2>
+                  <ol>
+                     <li>Name: ${json[index].name}</li>
+                     <li>Diameter: ${json[index].diameter}</li>
+                     <li>Star: ${json[index].star}</li>
+                     <li>Distance from Earth: ${json[index].distance}</li>
+                     <li>Number of Moons: ${json[index].moons}</li>
+                  </ol>
+                  <img src="${json[index].image}">
+               `
+               index = (index + 1) % json.length;
+         });
+   })
    let form = document.querySelector("form");
    form.addEventListener("submit", function(event) {
+      // alert("subit event activated");
       event.preventDefault();
    //   document.getElementById("pilotStatus").innerHTML += pilotNameInput;
      let pilotNameInput = form.elements['pilotName'].value;
