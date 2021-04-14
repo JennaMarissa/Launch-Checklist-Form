@@ -11,7 +11,8 @@ window.addEventListener("load", function() {
             // alert("ready to utilize info");
             // console.log(response);
             const div = document.getElementById("missionTarget");
-            let index = 0;
+            let index = Math.floor(Math.random()*6);
+               // alert(index);
                div.innerHTML = `
                   <h2>Mission Destination</h2>
                   <ol>
